@@ -10,6 +10,7 @@ using System.Security.Claims;
 using GetMyDeviceOnline.Utils;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
+using System.Configuration;
 
 namespace GetMyDeviceOnline.Controllers
 {
@@ -24,6 +25,11 @@ namespace GetMyDeviceOnline.Controllers
         public async Task<ActionResult> LoginIndex()
         {
             return View("index");
+        }
+
+        public async Task<ActionResult> redirect()
+        {
+            return Redirect(ConfigurationManager.AppSettings["ActualRedirectUri"]);
         }
 
         [Authorize]
